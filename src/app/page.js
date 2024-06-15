@@ -62,21 +62,25 @@ const Page = () => {
       <Header title="Top Anime" description="terpopuler" />
       <AnimeList data={animeData} loading={loading} />
 
-      <div className="flex mt-10 flex-col items-center">
-        {pagination(currentPage)}
-        <div className="inline-flex mt-2 xs:mt-0">
-          <button
-            onClick={handlePrev}
-            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white rounded-s bg-blue-500 hover:bg-blue-700"
-          >
-            Prev
-          </button>
-          <button
-            onClick={handleNext}
-            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-blue-500 border-0 border-s rounded-e hover:bg-blue-700"
-          >
-            Next
-          </button>
+      <div className="grid grid-rows-1 md:grid-cols-3 my-4 justify-items-center">
+        <div className="md:col-span-1 justify-self-start">
+          {pagination(currentPage)}
+        </div>
+        <div className="md:col-span-2 justify-self-end flex justify-center md:justify-end">
+          <div className="inline-flex">
+            <button
+              onClick={handlePrev}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white rounded-s bg-blue-500 hover:bg-blue-700"
+            >
+              Prev
+            </button>
+            <button
+              onClick={handleNext}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-blue-500 border-0 border-s rounded-e hover:bg-blue-700"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
 
