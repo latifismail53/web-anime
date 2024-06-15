@@ -33,9 +33,9 @@ const Page = () => {
 
   const pagination = (page) => {
     return (
-      <span class="text-sm text-gray-700 dark:text-gray-400">
-        Page <span class="font-semibold">{page}</span> of{" "}
-        <span class="font-semibold ">{numpages.count}</span> Entries
+      <span className="text-sm text-gray-700 dark:text-gray-400">
+        Page <span className="font-semibold">{page}</span> of{" "}
+        <span className="font-semibold ">{numpages.count}</span> Entries
       </span>
     );
   };
@@ -62,18 +62,18 @@ const Page = () => {
       <Header title="Top Anime" description="terpopuler" />
       <AnimeList data={animeData} loading={loading} />
 
-      <div class="flex flex-col items-center">
+      <div className="flex mt-10 flex-col items-center">
         {pagination(currentPage)}
-        <div class="inline-flex mt-2 xs:mt-0">
+        <div className="inline-flex mt-2 xs:mt-0">
           <button
             onClick={handlePrev}
-            class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white rounded-s bg-blue-500 hover:bg-blue-700"
+            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white rounded-s bg-blue-500 hover:bg-blue-700"
           >
             Prev
           </button>
           <button
             onClick={handleNext}
-            class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-blue-500 border-0 border-s rounded-e hover:bg-blue-700"
+            className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-blue-500 border-0 border-s rounded-e hover:bg-blue-700"
           >
             Next
           </button>
