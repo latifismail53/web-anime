@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import AnimeList from "./components/AnimeList";
-import Footer from "./components/Footer";
-import Header from "./components/AnimeList/Header";
+import AnimeList from "@/app/components/AnimeList";
+import Footer from "@/app/components/Footer";
+import Header from "@/app/components/AnimeList/Header";
 
-const Page = () => {
+const Page = ({ params: { keyword } }) => {
   const [animeData, setAnimeData] = useState([]); // State untuk menyimpan data anime
   const [currentPage, setCurrentPage] = useState(1); // State untuk melacak halaman saat ini
   const [loading, setLoading] = useState(true); // State untuk melacak status pemuatan
@@ -15,7 +15,7 @@ const Page = () => {
     setLoading(true); // Mulai pemuatan
     try {
       const response = await fetch(
-        `${process.env.API_ANIME}/top/anime?page=${page}&limit=6`
+        `${process.env.API_ANIME}/anime?q=${keyword}&page=${page}&limit=18`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -59,7 +59,7 @@ const Page = () => {
 
   return (
     <div>
-      <Header title="Top Anime" description="terpopuler" />
+      <Header title="Pencarian untuk" description={keyword} />
       <AnimeList data={animeData} loading={loading} />
 
       <div class="flex flex-col items-center">
