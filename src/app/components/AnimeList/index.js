@@ -37,17 +37,17 @@ const AnimeList = ({ data = [], loading }) => {
                   >
                     {anime.title}
                   </div>
-                  <div className="grid pt-2 grid-rows-2 lg:grid-cols-2 md:grid-cols-2 justify-between">
+                  <div className="grid pt-2 grid-rows-1 lg:grid-cols-2 md:grid-cols-2 justify-between">
                     <div className="text-sm text-slate-200">
-                      Episode {anime.episodes}
+                      💿 {anime.type} • {anime.episodes} eps
                     </div>
                     <div className="text-sm text-left lg:text-right text-slate-200">
                       ⭐ {anime.score}
                     </div>
                   </div>
-                  <span className="text-sm dark:text-slate-400 ">
-                    {anime.rating}
-                  </span>
+                  <div className="text-sm dark:text-slate-400 ">
+                    🤘 {anime.members} Member
+                  </div>
                 </div>
               </Link>
             ))}
