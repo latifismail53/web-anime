@@ -23,7 +23,10 @@ const AnimeList = ({ data = [], loading }) => {
                 key={anime.mal_id}
                 className="w-auto rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
               >
-                <div className="w-full h-60 lg:h-96 flex items-center justify-center">
+                <div className="relative w-full h-60 lg:h-96 flex items-center justify-center">
+                  <p className="absolute font-bold top-0 right-0 z-30 bg-sky-800 p-2 text-base text-white rounded-sm">
+                    #{anime.rank}
+                  </p>
                   <img
                     className="max-h-full w-full object-contain rounded-t-lg"
                     alt={anime.title}
@@ -45,8 +48,8 @@ const AnimeList = ({ data = [], loading }) => {
                       ⭐ {anime.score}
                     </div>
                   </div>
-                  <div className="text-sm dark:text-slate-400 ">
-                    🤘 {anime.members} Member
+                  <div className="text-sm dark:text-slate-400">
+                    🤘 {anime.members.toLocaleString()} Member
                   </div>
                 </div>
               </Link>
