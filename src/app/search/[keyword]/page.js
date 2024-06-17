@@ -62,21 +62,25 @@ const Page = ({ params: { keyword } }) => {
       <Header title="Pencarian untuk" description={keyword} />
       <AnimeList data={animeData} loading={loading} />
 
-      <div class="flex flex-col items-center">
-        {pagination(currentPage)}
-        <div class="inline-flex mt-2 xs:mt-0">
-          <button
-            onClick={handlePrev}
-            class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white rounded-s bg-blue-500 hover:bg-blue-700"
-          >
-            Prev
-          </button>
-          <button
-            onClick={handleNext}
-            class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-blue-500 border-0 border-s rounded-e hover:bg-blue-700"
-          >
-            Next
-          </button>
+      <div className="grid grid-rows-1 md:grid-rows-2 md:grid-cols-3 mt-5 justify-items-center md:items-baseline lg:items-baseline">
+        <div className="md:col-span-1 md:justify-self-start">
+          {pagination(currentPage)}
+        </div>
+        <div className="md:col-span-2 md:justify-self-end flex justify-center md:justify-end">
+          <div className="inline-flex">
+            <button
+              onClick={handlePrev}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white rounded-s bg-blue-500 hover:bg-blue-700"
+            >
+              Prev
+            </button>
+            <button
+              onClick={handleNext}
+              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-blue-500 border-0 border-s rounded-e hover:bg-blue-700"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
 

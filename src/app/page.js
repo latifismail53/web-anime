@@ -1,14 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import AnimeList from "./components/AnimeList";
-import Footer from "./components/Footer";
-import Header from "./components/AnimeList/Header";
+import Header from "./components/AnimeList/Header"; // Pastikan path yang benar untuk Header
+import Pagination from "./components/AnimeList/Pagination"; // Impor komponen Pagination
+import Skeleton from "react-loading-skeleton";
 
 const Page = () => {
   const [animeData, setAnimeData] = useState([]); // State untuk menyimpan data anime
   const [currentPage, setCurrentPage] = useState(1); // State untuk melacak halaman saat ini
   const [loading, setLoading] = useState(true); // State untuk melacak status pemuatan
-  const [numpages, setNumPages] = useState(true); // State untuk melacak status pemuatan
+  const [numPages, setNumPages] = useState(1); // State untuk jumlah halaman
 
   // Fungsi untuk memuat data anime dari API
   const fetchAnimeData = async (page) => {
@@ -23,21 +24,13 @@ const Page = () => {
       const data = await response.json();
       setAnimeData(data.data || []);
       setCurrentPage(page);
-      setNumPages(data.pagination.items);
+      setNumPages(data.pagination.items.count || 1);
     } catch (error) {
       console.error("Error fetching anime data:", error);
+      setAnimeData([]); // Set to empty array on error
     } finally {
       setLoading(false); // Selesai pemuatan
     }
-  };
-
-  const pagination = (page) => {
-    return (
-      <span className="text-sm text-gray-700 dark:text-gray-400">
-        Page <span className="font-semibold">{page}</span> of{" "}
-        <span className="font-semibold ">{numpages.count}</span> Entries
-      </span>
-    );
   };
 
   // Memuat data anime pertama kali halaman dimuat
@@ -60,32 +53,23 @@ const Page = () => {
   return (
     <div>
       <Header title="Top Anime" description="terpopuler" />
-      <AnimeList data={animeData} loading={loading} />
-
-      <div className="grid grid-rows-1 md:grid-cols-3 my-4 justify-items-center">
-        <div className="md:col-span-1 justify-self-start">
-          {pagination(currentPage)}
-        </div>
-        <div className="md:col-span-2 justify-self-end flex justify-center md:justify-end">
-          <div className="inline-flex">
-            <button
-              onClick={handlePrev}
-              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white rounded-s bg-blue-500 hover:bg-blue-700"
-            >
-              Prev
-            </button>
-            <button
-              onClick={handleNext}
-              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-blue-500 border-0 border-s rounded-e hover:bg-blue-700"
-            >
-              Next
-            </button>
+      {loading && (
+        <div className="md:w-auto m-5 lg:w-full rounded-lg">
+          <Skeleton height={362} className="rounded-t-lg" />
+          <div className="mt-4">
+            <Skeleton width="80%" className="mb-4" />
+            <Skeleton width="60%" className="mb-4" />
+            <Skeleton width="30%" />
           </div>
         </div>
-      </div>
-
-      {/* Footer */}
-      <Footer />
+      )}
+      <AnimeList data={animeData} loading={loading} />
+      <Pagination
+        currentPage={currentPage}
+        numPages={numPages}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+      />
     </div>
   );
 };

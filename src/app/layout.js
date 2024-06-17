@@ -3,6 +3,10 @@ import "./globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import Navbar from "./components/Navbar";
 
+import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
+import Jumbotron from "./components/Jumbotron";
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -19,7 +23,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${poppins.className} bg-slate-900`}>
         <Navbar />
+        {/* <Jumbotron /> */}
         <div className="container mx-auto">{children}</div>
+        <Analytics />
+        <Footer />
       </body>
     </html>
   );
