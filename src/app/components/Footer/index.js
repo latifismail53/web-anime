@@ -1,16 +1,16 @@
 const Footer = () => {
   return (
-    <footer className="bg-white fixed-bottom  rounded-sm shadow m-4 dark:bg-gray-800">
-      <div className="w-full mx-auto p-5 md:flex md:items-center md:justify-between">
+    <footer className="bg-white rounded-sm shadow dark:bg-gray-800 mt-5">
+      <div className="w-full mx-auto p-2 md:flex md:items-center md:justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © {new Date().getFullYear()}{" "}
+          © {new Date().getFullYear()} Anime Next . Build with ❤️{" "}
           <a
-            href="https://latifismailadjie.netlify.app/"
+            href="https://linkedin.com/in/latifismailadjie/"
             className="hover:underline"
+            target="_blank"
           >
             Latifismailadjie
           </a>
-          . Build with ❤️
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
